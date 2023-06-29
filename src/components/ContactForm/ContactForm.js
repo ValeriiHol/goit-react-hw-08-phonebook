@@ -1,18 +1,16 @@
-import { nanoid } from 'nanoid';
 import { useDispatch, useSelector } from 'react-redux';
-import { addContactThunk } from '../../redux/operation/operation';
-import { selectContacts } from 'redux/selectors/selectors';
-
+import { addContactThunk } from 'redux/contacts/operation';
+import { selectContacts } from 'redux/contacts/selectors';
 import css from './ContactForm.module.css';
 
-const ContactForm = ({ onSubmit }) => {
+const ContactForm = () => {
   const dispatch = useDispatch();
   const contacts = useSelector(selectContacts);
 
   const handleSubmit = e => {
     e.preventDefault();
     const newContact = {
-      id: nanoid(),
+      id: '',
       name: e.target.elements.name.value,
       number: e.target.elements.number.value,
     };
